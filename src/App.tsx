@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "normalize.css";
+import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
+import {
+  CentredContainer500W,
+  DataVisualizeControl,
+} from "./components/UI/UIItems";
+import { QUEUE_VISUALIZER, STACK_VISUALIZER } from "./routes";
+import { useTranslation } from "react-i18next";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const { t } = useTranslation();
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <CentredContainer500W minHeight={500} alignItems={"center"}>
+      <Typography>{t("headers.hi")}</Typography>
+      <Link to={STACK_VISUALIZER}>
+        <DataVisualizeControl variant="contained">
+          {t("buttonText.stack")}
+        </DataVisualizeControl>
+      </Link>
+      <Link to={QUEUE_VISUALIZER}>
+        <DataVisualizeControl variant="contained">
+          {t("buttonText.queue")}
+        </DataVisualizeControl>
+      </Link>
+    </CentredContainer500W>
+  );
 }
 
-export default App
+export default App;
