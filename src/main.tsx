@@ -7,7 +7,7 @@ import { QueueVisualizer } from "./pages/QueueVisualizer/QueueVisualizer.tsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.ts";
 import { QUEUE_VISUALIZER, ROOT, STACK_VISUALIZER } from "./routes.ts";
-import "./i18n";
+import "./translation/i18n.ts";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

@@ -1,0 +1,18 @@
+{
+    "en": {
+      "translation": {
+        "buttons": {
+          "queue": "Queue",
+          "stack": "Stack",
+          "enqueue": "Enqueue",
+          "dequeue": "Dequeue",
+          "back": "Back",
+          "push": "Push",
+          "pop": "Pop"
+        },
+        "headers": {
+          "hi": "HI"
+        }
+      }
+    }
+  }

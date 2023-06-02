@@ -7,16 +7,16 @@ import {
 } from "./UIItems";
 import { ROOT } from "../../routes";
 import { useTranslation } from "react-i18next";
-import { v4 } from "uuid";
+import { queueItem, stackItem } from "../../redux/slices/dataVisualizer/types";
 
 interface DataListLayoutProps {
-  inputValue: string | number;
+  inputValue: string;
   setInputValue: (inp: string) => void;
   firstButtonHandler: () => void;
   secondButtonHandler: () => void;
   firstButtonName: string;
   secondButtonName: string;
-  dataList: (string | number)[];
+  dataList: (queueItem | stackItem)[];
 }
 
 export default function DataListLayout({
@@ -64,8 +64,8 @@ export default function DataListLayout({
         </Box>
       </Box>
       <Stack>
-        {dataList.map((item) => (
-          <ListItem key={v4()}>{item}</ListItem>
+        {dataList.map((elem) => (
+          <ListItem key={elem.id}>{elem.item}</ListItem>
         ))}
       </Stack>
       <Link to={ROOT}>

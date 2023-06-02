@@ -8,6 +8,7 @@ import {
 import DataListLayout from "../../components/UI/DataListLayout";
 import { EMPTY_STRING } from "../../constants";
 import { useTranslation } from "react-i18next";
+import { v4 } from "uuid";
 
 export const StackVisualizer = () => {
   const [stackVisualizerInput, setStackVisualizerInput] =
@@ -19,7 +20,9 @@ export const StackVisualizer = () => {
 
   const handleSetStackVisualizerListPush = () => {
     if (stackVisualizerInput) {
-      dispatch(stackVisualizerListPush(stackVisualizerInput));
+      dispatch(
+        stackVisualizerListPush({ id: v4(), item: stackVisualizerInput })
+      );
     }
     setStackVisualizerInput(EMPTY_STRING);
   };

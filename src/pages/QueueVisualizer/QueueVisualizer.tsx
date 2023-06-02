@@ -8,6 +8,7 @@ import {
 } from "../../redux/slices/dataVisualizer";
 import { EMPTY_STRING } from "../../constants";
 import { useTranslation } from "react-i18next";
+import { v4 } from "uuid";
 
 export const QueueVisualizer = () => {
   const [queueVisualizerInput, setQueueVisualizerInput] =
@@ -19,7 +20,9 @@ export const QueueVisualizer = () => {
 
   const handleSetQueueVisualizerEnqueue = () => {
     if (queueVisualizerInput) {
-      dispatch(queueVisualzierEnqueue(queueVisualizerInput));
+      dispatch(
+        queueVisualzierEnqueue({ id: v4(), item: queueVisualizerInput })
+      );
     }
     setQueueVisualizerInput(EMPTY_STRING);
   };

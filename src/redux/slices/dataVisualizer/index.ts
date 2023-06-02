@@ -1,27 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { dataVisulizerState } from "./types";
+import type { dataVisulizerState, queueItem, stackItem } from "./types";
+import { v4 } from "uuid";
 
 const initialState: dataVisulizerState = {
-  queueVisualizerQueue: [1, 2, 3],
-  stackVisualizerList: [1, 2, 3],
+  queueVisualizerQueue: [
+    { id: v4(), item: "1" },
+    { id: v4(), item: "2" },
+    { id: v4(), item: "3" },
+  ],
+  stackVisualizerList: [
+    { id: v4(), item: "1" },
+    { id: v4(), item: "2" },
+    { id: v4(), item: "3" },
+  ],
 };
 
 export const dataVisulizerSlice = createSlice({
   name: "dataVisulizer",
   initialState,
   reducers: {
-    stackVisualizerListPush: (
-      state,
-      action: PayloadAction<number | string>
-    ) => {
+    stackVisualizerListPush: (state, action: PayloadAction<stackItem>) => {
       state.stackVisualizerList.push(action.payload);
     },
     stackVisualizerListPop: (state) => {
       state.stackVisualizerList.pop();
     },
-    queueVisualzierEnqueue: (state, action: PayloadAction<number | string>) => {
+    queueVisualzierEnqueue: (state, action: PayloadAction<queueItem>) => {
       state.queueVisualizerQueue.push(action.payload);
     },
     queueVisualizerDequeue: (state) => {
