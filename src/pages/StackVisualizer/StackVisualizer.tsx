@@ -3,24 +3,22 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import {
   stackVisualizerListPush,
   stackVisualizerListPop,
+  dataVisualizerStackSelektor,
 } from "../../redux/slices/dataVisualizer";
-import DataListLayout from "../UI/DataListLayout";
+import DataListLayout from "../../components/UI/DataListLayout";
 import { EMPTY_STRING } from "../../constants";
 import { useTranslation } from "react-i18next";
 
-export default function StackVisualizer() {
-  const [stackVisualizerInput, setStackVisualizerInput] = useState<
-    string | number
-  >(EMPTY_STRING);
+export const StackVisualizer = () => {
+  const [stackVisualizerInput, setStackVisualizerInput] =
+    useState<string>(EMPTY_STRING);
   const { t } = useTranslation();
 
-  const stackList = useAppSelector(
-    (state) => state.dataVisualizer.stackVisualizerList
-  );
+  const stackList = useAppSelector(dataVisualizerStackSelektor);
   const dispatch = useAppDispatch();
 
   const handleSetStackVisualizerListPush = () => {
-    if (stackVisualizerInput !== EMPTY_STRING) {
+    if (stackVisualizerInput) {
       dispatch(stackVisualizerListPush(stackVisualizerInput));
     }
     setStackVisualizerInput(EMPTY_STRING);
@@ -34,11 +32,11 @@ export default function StackVisualizer() {
     <DataListLayout
       inputValue={stackVisualizerInput}
       setInputValue={setStackVisualizerInput}
-      firstButtonName={t("buttonText.push")}
-      secondButtonName={t("buttonText.pop")}
+      firstButtonName={t("buttons.push")}
+      secondButtonName={t("buttons.pop")}
       firstButtonHandler={handleSetStackVisualizerListPush}
       secondButtonHandler={handleSetStackVisualizerListPop}
       dataList={stackList}
     />
   );
-}
+};

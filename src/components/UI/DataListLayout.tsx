@@ -1,4 +1,4 @@
-import { Box, TextField, Button, Stack } from "@mui/material";
+import { Box, TextField, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import {
   CentredContainer500W,
@@ -7,6 +7,7 @@ import {
 } from "./UIItems";
 import { ROOT } from "../../routes";
 import { useTranslation } from "react-i18next";
+import { v4 } from "uuid";
 
 interface DataListLayoutProps {
   inputValue: string | number;
@@ -28,6 +29,7 @@ export default function DataListLayout({
   dataList,
 }: DataListLayoutProps) {
   const { t } = useTranslation();
+
   return (
     <CentredContainer500W>
       <Box
@@ -62,13 +64,13 @@ export default function DataListLayout({
         </Box>
       </Box>
       <Stack>
-        {[...dataList].reverse().map((item, index) => (
-          <ListItem key={index}>{item}</ListItem>
+        {dataList.map((item) => (
+          <ListItem key={v4()}>{item}</ListItem>
         ))}
       </Stack>
       <Link to={ROOT}>
         <DataVisualizeControl variant="contained">
-          {t("buttonText.back")}
+          {t("buttons.back")}
         </DataVisualizeControl>
       </Link>
     </CentredContainer500W>

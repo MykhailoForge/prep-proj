@@ -14,7 +14,7 @@ i18n
     resources: {
       en: {
         translation: {
-          buttonText: {
+          buttons: {
             queue: "Queue",
             stack: "Stack",
             enqueue: "Enqueue",

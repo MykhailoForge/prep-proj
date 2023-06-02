@@ -16,25 +16,16 @@ export const dataVisulizerSlice = createSlice({
       state,
       action: PayloadAction<number | string>
     ) => {
-      state.stackVisualizerList = [
-        action.payload,
-        ...state.stackVisualizerList,
-      ];
+      state.stackVisualizerList.push(action.payload);
     },
     stackVisualizerListPop: (state) => {
-      state.stackVisualizerList = [...state.stackVisualizerList.slice(1)];
+      state.stackVisualizerList.pop();
     },
     queueVisualzierEnqueue: (state, action: PayloadAction<number | string>) => {
-      state.queueVisualizerQueue = [
-        action.payload,
-        ...state.queueVisualizerQueue,
-      ];
+      state.queueVisualizerQueue.push(action.payload);
     },
     queueVisualizerDequeue: (state) => {
-      const frontItem = state.queueVisualizerQueue.reverse().shift();
-      state.queueVisualizerQueue = state.queueVisualizerQueue
-        .filter((elem) => elem !== frontItem)
-        .reverse();
+      state.queueVisualizerQueue.shift();
     },
   },
 });
@@ -47,3 +38,9 @@ export const {
 } = dataVisulizerSlice.actions;
 
 export default dataVisulizerSlice.reducer;
+
+export const dataVisualizerQueueSelektor = (state: RootState) =>
+  state.dataVisualizer.queueVisualizerQueue;
+
+export const dataVisualizerStackSelektor = (state: RootState) =>
+  state.dataVisualizer.stackVisualizerList;

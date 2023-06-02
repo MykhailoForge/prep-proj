@@ -1,26 +1,24 @@
 import { useState } from "react";
-import DataListLayout from "../UI/DataListLayout";
+import DataListLayout from "../../components/UI/DataListLayout";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import {
+  dataVisualizerQueueSelektor,
   queueVisualizerDequeue,
   queueVisualzierEnqueue,
 } from "../../redux/slices/dataVisualizer";
 import { EMPTY_STRING } from "../../constants";
 import { useTranslation } from "react-i18next";
 
-export default function QueueVisualizer() {
-  const [queueVisualizerInput, setQueueVisualizerInput] = useState<
-    string | number
-  >(EMPTY_STRING);
+export const QueueVisualizer = () => {
+  const [queueVisualizerInput, setQueueVisualizerInput] =
+    useState<string>(EMPTY_STRING);
   const { t } = useTranslation();
 
-  const queueList = useAppSelector(
-    (state) => state.dataVisualizer.queueVisualizerQueue
-  );
+  const queueList = useAppSelector(dataVisualizerQueueSelektor);
   const dispatch = useAppDispatch();
 
   const handleSetQueueVisualizerEnqueue = () => {
-    if (queueVisualizerInput !== EMPTY_STRING) {
+    if (queueVisualizerInput) {
       dispatch(queueVisualzierEnqueue(queueVisualizerInput));
     }
     setQueueVisualizerInput(EMPTY_STRING);
@@ -34,11 +32,11 @@ export default function QueueVisualizer() {
     <DataListLayout
       inputValue={queueVisualizerInput}
       setInputValue={setQueueVisualizerInput}
-      firstButtonName={t("buttonText.enqueue")}
-      secondButtonName={t("buttonText.dequeue")}
+      firstButtonName={t("buttons.enqueue")}
+      secondButtonName={t("buttons.dequeue")}
       firstButtonHandler={handleSetQueueVisualizerEnqueue}
       secondButtonHandler={handleSetQueueVisualizerDequeue}
       dataList={queueList}
     />
   );
-}
+};

@@ -15,12 +15,12 @@ function App() {
       <Typography>{t("headers.hi")}</Typography>
       <Link to={STACK_VISUALIZER}>
         <DataVisualizeControl variant="contained">
-          {t("buttonText.stack")}
+          {t("buttons.stack")}
         </DataVisualizeControl>
       </Link>
       <Link to={QUEUE_VISUALIZER}>
         <DataVisualizeControl variant="contained">
-          {t("buttonText.queue")}
+          {t("buttons.queue")}
         </DataVisualizeControl>
       </Link>
     </CentredContainer500W>
