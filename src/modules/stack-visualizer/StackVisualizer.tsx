@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { useAppDispatch, useAppSelector } from "../core/store/store";
 import {
   stackVisualizerListPush,
   stackVisualizerListPop,
-  dataVisualizerStackSelektor,
-} from "../../redux/slices/dataVisualizer";
-import DataListLayout from "../../components/UI/DataListLayout";
+  stackVisualizerSelektor,
+} from "../stack-visualizer/store/stackVisualizerSlice";
+import DataListLayout from "../theme/components/DataListLayout";
 import { EMPTY_STRING } from "../../constants";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";
@@ -15,7 +15,7 @@ export const StackVisualizer = () => {
     useState<string>(EMPTY_STRING);
   const { t } = useTranslation();
 
-  const stackList = useAppSelector(dataVisualizerStackSelektor);
+  const stackList = useAppSelector(stackVisualizerSelektor);
   const dispatch = useAppDispatch();
 
   const handleSetStackVisualizerListPush = () => {

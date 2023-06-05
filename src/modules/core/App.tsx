@@ -4,8 +4,8 @@ import { Typography } from "@mui/material";
 import {
   CentredContainer500W,
   DataVisualizeControl,
-} from "./components/UI/UIItems";
-import { QUEUE_VISUALIZER, STACK_VISUALIZER } from "./routes";
+} from "../theme/components/UIItems";
+import { QUEUE_VISUALIZER, STACK_VISUALIZER } from "../../routes";
 import { useTranslation } from "react-i18next";
 
 function App() {
