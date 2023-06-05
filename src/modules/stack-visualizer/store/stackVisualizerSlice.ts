@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../core/store/store";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { dataVisualizerStateItem } from "../../core/store/types";
 import { v4 } from "uuid";
+import { stackArrayItem } from "./types";
 
-const initialState: dataVisualizerStateItem[] = [
+const initialState: stackArrayItem[] = [
   { id: v4(), item: "1" },
   { id: v4(), item: "2" },
   { id: v4(), item: "3" },
@@ -14,10 +14,7 @@ export const stackVisualierSlice = createSlice({
   name: "stackVisualizer",
   initialState,
   reducers: {
-    stackVisualizerListPush: (
-      state,
-      action: PayloadAction<dataVisualizerStateItem>
-    ) => {
+    stackVisualizerListPush: (state, action: PayloadAction<stackArrayItem>) => {
       state.push(action.payload);
     },
     stackVisualizerListPop: (state) => {
@@ -31,5 +28,5 @@ export const { stackVisualizerListPop, stackVisualizerListPush } =
 
 export default stackVisualierSlice.reducer;
 
-export const stackVisualizerSelektor = (state: RootState) =>
+export const stackVisualizerSelector = (state: RootState) =>
   state.stackVisualizer;

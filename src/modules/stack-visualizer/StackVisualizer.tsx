@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../core/store/store";
 import {
   stackVisualizerListPush,
   stackVisualizerListPop,
-  stackVisualizerSelektor,
+  stackVisualizerSelector,
 } from "../stack-visualizer/store/stackVisualizerSlice";
 import DataListLayout from "../theme/components/DataListLayout";
 import { EMPTY_STRING } from "../../constants";
@@ -15,7 +15,7 @@ export const StackVisualizer = () => {
     useState<string>(EMPTY_STRING);
   const { t } = useTranslation();
 
-  const stackList = useAppSelector(stackVisualizerSelektor);
+  const stackList = useAppSelector(stackVisualizerSelector);
   const dispatch = useAppDispatch();
 
   const handleSetStackVisualizerListPush = () => {

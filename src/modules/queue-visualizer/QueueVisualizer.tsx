@@ -2,7 +2,7 @@ import { useState } from "react";
 import DataListLayout from "../theme/components/DataListLayout";
 import { useAppDispatch, useAppSelector } from "../core/store/store";
 import {
-  queueVisualizerSelektor,
+  queueVisualizerSelector,
   queueVisualizerDequeue,
   queueVisualzierEnqueue,
 } from "../queue-visualizer/store/queueVisualizerSlice";
@@ -15,7 +15,7 @@ export const QueueVisualizer = () => {
     useState<string>(EMPTY_STRING);
   const { t } = useTranslation();
 
-  const queueList = useAppSelector(queueVisualizerSelektor);
+  const queueList = useAppSelector(queueVisualizerSelector);
   const dispatch = useAppDispatch();
 
   const handleSetQueueVisualizerEnqueue = () => {
