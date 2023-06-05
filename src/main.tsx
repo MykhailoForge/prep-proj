@@ -1,23 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { StackVisualizer } from "./pages/StackVisualizer/StackVisualizer.tsx";
-import { QueueVisualizer } from "./pages/QueueVisualizer/QueueVisualizer.tsx";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./redux/store.ts";
-import { QUEUE_VISUALIZER, ROOT, STACK_VISUALIZER } from "./routes.ts";
-import "./translation/i18n.ts";
+import { store } from "./modules/core/store/store.ts";
+import "./modules/core/translations/i18n.ts";
+import AppRouter from "./modules/core/AppRouter.tsx";
+
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route path={ROOT} element={<App />} />
-          <Route path={STACK_VISUALIZER} element={<StackVisualizer />} />
-          <Route path={QUEUE_VISUALIZER} element={<QueueVisualizer />} />
-        </Routes>
+        <AppRouter />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

@@ -5,9 +5,10 @@ import {
   DataVisualizeControl,
   ListItem,
 } from "./UIItems";
-import { ROOT } from "../../routes";
+import { ROOT } from "../../core/routes";
 import { useTranslation } from "react-i18next";
-import { queueItem, stackItem } from "../../redux/slices/dataVisualizer/types";
+import { stackArrayItem } from "../../stack-visualizer/store/types";
+import { queueArrayItem } from "../../queue-visualizer/store/types";
 
 interface DataListLayoutProps {
   inputValue: string;
@@ -16,7 +17,7 @@ interface DataListLayoutProps {
   secondButtonHandler: () => void;
   firstButtonName: string;
   secondButtonName: string;
-  dataList: (queueItem | stackItem)[];
+  dataList: stackArrayItem[] | queueArrayItem[];
 }
 
 export default function DataListLayout({

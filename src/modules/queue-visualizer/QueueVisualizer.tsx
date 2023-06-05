@@ -1,11 +1,11 @@
 import { useState } from "react";
-import DataListLayout from "../../components/UI/DataListLayout";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
+import DataListLayout from "../theme/components/DataListLayout";
+import { useAppDispatch, useAppSelector } from "../core/store/store";
 import {
-  dataVisualizerQueueSelektor,
+  queueVisualizerSelector,
   queueVisualizerDequeue,
   queueVisualzierEnqueue,
-} from "../../redux/slices/dataVisualizer";
+} from "../queue-visualizer/store/queueVisualizerSlice";
 import { EMPTY_STRING } from "../../constants";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";
@@ -15,7 +15,7 @@ export const QueueVisualizer = () => {
     useState<string>(EMPTY_STRING);
   const { t } = useTranslation();
 
-  const queueList = useAppSelector(dataVisualizerQueueSelektor);
+  const queueList = useAppSelector(queueVisualizerSelector);
   const dispatch = useAppDispatch();
 
   const handleSetQueueVisualizerEnqueue = () => {
