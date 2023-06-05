@@ -5,7 +5,7 @@ import {
   CentredContainer500W,
   DataVisualizeControl,
 } from "../theme/components/UIItems";
-import { QUEUE_VISUALIZER, STACK_VISUALIZER } from "../../routes";
+import { QUEUE_VISUALIZER, STACK_VISUALIZER } from "../core/routes";
 import { useTranslation } from "react-i18next";
 
 function App() {

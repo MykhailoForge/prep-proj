@@ -5,7 +5,7 @@ import {
   DataVisualizeControl,
   ListItem,
 } from "./UIItems";
-import { ROOT } from "../../../routes";
+import { ROOT } from "../../core/routes";
 import { useTranslation } from "react-i18next";
 import { dataVisualizerStateItem } from "../../core/store/types";
 
