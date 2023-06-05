@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../core/store/store";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { v4 } from "uuid";
-import { queueArrayItem } from "./types";
+import { queueArrayItem } from "../queueVisualizerModels";
 
 const initialState: queueArrayItem[] = [
   { id: v4(), item: "1" },

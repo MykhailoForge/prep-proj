@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../core/store/store";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { v4 } from "uuid";
-import { stackArrayItem } from "./types";
+import { stackArrayItem } from "../stackVisualizerModels";
 
 const initialState: stackArrayItem[] = [
   { id: v4(), item: "1" },
