@@ -1,0 +1,16 @@
+{
+  "translation": {
+    "buttons": {
+      "queue": "Черга",
+      "stack": "Стек",
+      "enqueue": "В чергу",
+      "dequeue": "З черги",
+      "back": "Назад",
+      "push": "Пуш",
+      "pop": "Поп"
+    },
+    "headers": {
+      "hi": "Привіт"
+    }
+  }
+}

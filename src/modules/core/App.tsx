@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 
 function App() {
   const { t } = useTranslation();
+  
   return (
     <CentredContainer500W minHeight={500} alignItems={"center"}>
       <Typography>{t("headers.hi")}</Typography>

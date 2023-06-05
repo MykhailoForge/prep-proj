@@ -7,8 +7,8 @@ import {
 } from "./UIItems";
 import { ROOT } from "../../core/routes";
 import { useTranslation } from "react-i18next";
-import { stackArrayItem } from "../../stack-visualizer/store/types";
-import { queueArrayItem } from "../../queue-visualizer/store/types";
+import { stackArrayItem } from "../../stack-visualizer/stackVisualizerModels";
+import { queueArrayItem } from "../../queue-visualizer/queueVisualizerModels";
 
 interface DataListLayoutProps {
   inputValue: string;
