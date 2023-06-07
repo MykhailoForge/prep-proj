@@ -3,16 +3,16 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useAppSelector, useAppDispatch } from "../../core/store/store";
+import { useAppSelector, useAppDispatch } from "../core/store/store";
 import {
   languageArrSelector,
   selectedLanguageSelector,
   setLanguage,
-} from "../../core/store/coreSlice";
+} from "../core/store/coreSlice";
 import { useTranslation } from "react-i18next";
 
 export const LanguageSelector = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const languageArr = useAppSelector(languageArrSelector);
   const selectedLanguage = useAppSelector(selectedLanguageSelector);
   const dispatch = useAppDispatch();
@@ -26,7 +26,7 @@ export const LanguageSelector = () => {
   return (
     <Box sx={{ maxWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel>Lang</InputLabel>
+        <InputLabel>{t("languageSelector.labels.language")}</InputLabel>
         <Select
           value={selectedLanguage}
           label="selectedLanguage"

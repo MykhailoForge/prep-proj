@@ -1,16 +1,35 @@
 {
   "translation": {
-    "buttons": {
-      "queue": "Queue",
-      "stack": "Stack",
-      "enqueue": "Enqueue",
-      "dequeue": "Dequeue",
-      "back": "Back",
-      "push": "Push",
-      "pop": "Pop"
+    "queueVisualizer": {
+      "buttons": {
+        "add": "Enqueue",
+        "remove": "Dequeue"
+      }
     },
-    "headers": {
-      "hi": "HI"
+    "stackVisualizer": {
+      "buttons": {
+        "add": "Push",
+        "remove": "Pop"
+      }
+    },
+    "app": {
+      "buttons": {
+        "toQueue": "Queue",
+        "toStack": "Stack"
+      },
+      "typography": {
+        "hi": "Hi"
+      }
+    },
+    "dataListLayout": {
+      "buttons": {
+        "back": "Back"
+      }
+    },
+    "languageSelector": {
+      "labels": {
+        "language": "Language"
+      }
     }
   }
 }

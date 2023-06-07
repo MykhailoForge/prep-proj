@@ -1,14 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { coreState, lanuageItem } from "./types";
+import { coreState } from "./types";
 import { RootState } from "./store";
+import { LANGUAGE_KEYS } from "../../../constants";
 import { v4 } from "uuid";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: coreState = {
-  selectedLanguage: "en",
+  selectedLanguage: LANGUAGE_KEYS.EN,
   languageSelectArr: [
-    { id: v4(), item: "en" },
-    { id: v4(), item: "ua" },
+    { id: v4(), item: LANGUAGE_KEYS.EN },
+    { id: v4(), item: LANGUAGE_KEYS.UA },
   ],
 };
 

@@ -1,16 +1,35 @@
 {
   "translation": {
-    "buttons": {
-      "queue": "Черга",
-      "stack": "Стек",
-      "enqueue": "В чергу",
-      "dequeue": "З черги",
-      "back": "Назад",
-      "push": "Пуш",
-      "pop": "Поп"
+    "queueVisualizer": {
+      "buttons": {
+        "add": "Додати",
+        "remove": "Дістати"
+      }
     },
-    "headers": {
-      "hi": "Привіт"
+    "stackVisualizer": {
+      "buttons": {
+        "add": "Пуш",
+        "remove": "Дістати"
+      }
+    },
+    "app": {
+      "buttons": {
+        "toQueue": "Черга",
+        "toStack": "Стек"
+      },
+      "typography": {
+        "hi": "Привіт"
+      }
+    },
+    "dataListLayout": {
+      "buttons": {
+        "back": "Повернутись"
+      }
+    },
+    "languageSelector" : {
+      "labels": {
+        "language": "Мова"
+      }
     }
   }
 }

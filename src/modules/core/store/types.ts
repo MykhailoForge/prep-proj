@@ -3,12 +3,12 @@ export interface dataVisualizerStateItem {
   item: string;
 }
 
-export interface lanuageItem {
+export interface languageItem {
   id: string;
   item: string;
 }
 
 export interface coreState {
-  languageSelectArr: lanuageItem[];
+  languageSelectArr: languageItem[];
   selectedLanguage: string;
 }
