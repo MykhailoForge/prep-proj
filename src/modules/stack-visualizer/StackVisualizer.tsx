@@ -5,7 +5,7 @@ import {
   stackVisualizerListPop,
   stackVisualizerSelector,
 } from "../stack-visualizer/store/stackVisualizerSlice";
-import DataListLayout from "../theme/components/DataListLayout/DataListLayout";
+import DataListLayout from "../theme/components/DataListLayout";
 import { EMPTY_STRING } from "../../constants";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";

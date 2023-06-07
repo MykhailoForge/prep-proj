@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DataListLayout from "../theme/components/DataListLayout/DataListLayout";
+import DataListLayout from "../theme/components/DataListLayout";
 import { useAppDispatch, useAppSelector } from "../core/store/store";
 import {
   queueVisualizerSelector,
