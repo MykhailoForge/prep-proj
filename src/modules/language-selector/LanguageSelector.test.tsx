@@ -1,14 +1,24 @@
 import { describe, test, vi } from "vitest";
-import { render, screen, fireEvent, cleanup } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  cleanup,
+  waitFor,
+  getAllByTestId,
+  getByRole,
+  getByText,
+} from "@testing-library/react";
 import { store } from "../core/store/store";
 import { Provider } from "react-redux";
 import { LanguageSelector } from "./LanguageSelector";
+import userEvent from "@testing-library/user-event";
 
 beforeEach(() => vi.resetAllMocks());
 
 afterEach(() => cleanup());
 
-const mockChangeFunc = vi.fn();
+const mockChangeFunc = vi.fn().mockImplementation(() => console.log("Hello"));
 
 describe("languageSelector test", () => {
   test("Should render component", () => {
@@ -19,14 +29,15 @@ describe("languageSelector test", () => {
     );
   });
 
-  test("Should handle select", () => {
-    render(
+  test("Should handle select", async () => {
+    const { container } = render(
       <Provider store={store}>
         <LanguageSelector changeHandler={mockChangeFunc} />
       </Provider>
     );
 
-    const selectBody = screen.getByTestId("select");
-    fireEvent.change(selectBody, { target: { value: "en" } });
+    await waitFor(() => userEvent.click(getByRole(container, "button")));
+    await waitFor(() => userEvent.click(screen.getByText("ua")));
+    expect(mockChangeFunc.mock.calls).toHaveLength(1);
   });
 });

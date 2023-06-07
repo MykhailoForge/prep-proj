@@ -4,7 +4,6 @@ import {
   languageArrSelector,
   selectedLanguageSelector,
 } from "../core/store/coreSlice";
-
 import { MenuItem, TextField } from "@mui/material";
 
 interface LanguageSelectorProps {
@@ -19,7 +18,6 @@ export const LanguageSelector = ({ changeHandler }: LanguageSelectorProps) => {
     <Box sx={{ maxWidth: 120 }}>
       <TextField
         select
-        inputProps={{ "data-testid": "select" }}
         onChange={changeHandler}
         fullWidth
         value={selectedLanguage}
