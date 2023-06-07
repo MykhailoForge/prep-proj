@@ -1,5 +1,5 @@
 import { describe, test } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { QueueVisualizer } from "./QueueVisualizer";
 import { Provider } from "react-redux";
 import { store } from "../core/store/store";
@@ -39,9 +39,11 @@ describe("queueVisualizer test", () => {
 
     const addButton = screen.getByTestId("add-button");
     fireEvent.click(addButton);
+
+    expect(screen.getByText(/queue elem/i)).toBeInTheDocument();
   });
 
-  test("Should process pop button", () => {
+  test("Should process pop button", async () => {
     render(
       <Provider store={store}>
         <QueueVisualizer />
@@ -51,5 +53,9 @@ describe("queueVisualizer test", () => {
 
     const removeButton = screen.getByTestId("remove-button");
     fireEvent.click(removeButton);
+
+    await waitFor(() => {
+      expect(screen.queryByText(/1/i)).not.toBeInTheDocument();
+    });
   });
 });

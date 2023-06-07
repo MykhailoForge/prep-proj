@@ -1,5 +1,5 @@
 import { describe, test } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { StackVisualizer } from "./StackVisualizer";
 import { Provider } from "react-redux";
 import { store } from "../core/store/store";
@@ -28,9 +28,10 @@ describe("stackVisualizer test", () => {
 
     const addButton = screen.getByTestId("add-button");
     fireEvent.click(addButton);
+    expect(screen.getByText(/stack elem/i)).toBeInTheDocument();
   });
 
-  test("Should process pop button", () => {
+  test("Should process pop button", async () => {
     render(
       <Provider store={store}>
         <StackVisualizer />
@@ -40,5 +41,9 @@ describe("stackVisualizer test", () => {
 
     const removeButton = screen.getByTestId("remove-button");
     fireEvent.click(removeButton);
+    
+    await waitFor(() => {
+      expect(screen.queryByText(/stack elem/i)).not.toBeInTheDocument();
+    });
   });
 });
