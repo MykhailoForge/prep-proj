@@ -1,0 +1,35 @@
+{
+  "translation": {
+    "queueVisualizer": {
+      "buttons": {
+        "add": "Додати",
+        "remove": "Дістати"
+      }
+    },
+    "stackVisualizer": {
+      "buttons": {
+        "add": "Пуш",
+        "remove": "Дістати"
+      }
+    },
+    "app": {
+      "buttons": {
+        "toQueue": "Черга",
+        "toStack": "Стек"
+      },
+      "typography": {
+        "hi": "Привіт"
+      }
+    },
+    "dataListLayout": {
+      "buttons": {
+        "back": "Повернутись"
+      }
+    },
+    "languageSelector" : {
+      "labels": {
+        "language": "Мова"
+      }
+    }
+  }
+}

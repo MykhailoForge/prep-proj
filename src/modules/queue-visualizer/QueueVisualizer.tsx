@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DataListLayout from "../theme/components/DataListLayout";
+import DataListLayout from "../theme/components/DataListLayout/DataListLayout";
 import { useAppDispatch, useAppSelector } from "../core/store/store";
 import {
   queueVisualizerSelector,
@@ -35,8 +35,8 @@ export const QueueVisualizer = () => {
     <DataListLayout
       inputValue={queueVisualizerInput}
       setInputValue={setQueueVisualizerInput}
-      firstButtonName={t("buttons.enqueue")}
-      secondButtonName={t("buttons.dequeue")}
+      firstButtonName={t("queueVisualizer.buttons.add")}
+      secondButtonName={t("queueVisualizer.buttons.remove")}
       firstButtonHandler={handleSetQueueVisualizerEnqueue}
       secondButtonHandler={handleSetQueueVisualizerDequeue}
       dataList={queueList}

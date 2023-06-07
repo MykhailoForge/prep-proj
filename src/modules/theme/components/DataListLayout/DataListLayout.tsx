@@ -4,11 +4,11 @@ import {
   CentredContainer500W,
   DataVisualizeControl,
   ListItem,
-} from "./UIItems";
-import { ROOT } from "../../core/routes";
+} from "../UIItems";
+import { ROOT } from "../../../core/routes";
 import { useTranslation } from "react-i18next";
-import { stackArrayItem } from "../../stack-visualizer/store/types";
-import { queueArrayItem } from "../../queue-visualizer/store/types";
+import { stackArrayItem } from "../../../stack-visualizer/stackVisualizerModels";
+import { queueArrayItem } from "../../../queue-visualizer/queueVisualizerModels";
 
 interface DataListLayoutProps {
   inputValue: string;
@@ -71,7 +71,7 @@ export default function DataListLayout({
       </Stack>
       <Link to={ROOT}>
         <DataVisualizeControl variant="contained">
-          {t("buttons.back")}
+          {t("dataListLayout.buttons.back")}
         </DataVisualizeControl>
       </Link>
     </CentredContainer500W>

@@ -10,17 +10,18 @@ import { useTranslation } from "react-i18next";
 
 function App() {
   const { t } = useTranslation();
+
   return (
     <CentredContainer500W minHeight={500} alignItems={"center"}>
-      <Typography>{t("headers.hi")}</Typography>
+      <Typography>{t("app.typography.hi")}</Typography>
       <Link to={STACK_VISUALIZER}>
         <DataVisualizeControl variant="contained">
-          {t("buttons.stack")}
+          {t("app.buttons.toStack")}
         </DataVisualizeControl>
       </Link>
       <Link to={QUEUE_VISUALIZER}>
         <DataVisualizeControl variant="contained">
-          {t("buttons.queue")}
+          {t("app.buttons.toQueue")}
         </DataVisualizeControl>
       </Link>
     </CentredContainer500W>

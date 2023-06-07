@@ -5,7 +5,7 @@ import {
   stackVisualizerListPop,
   stackVisualizerSelector,
 } from "../stack-visualizer/store/stackVisualizerSlice";
-import DataListLayout from "../theme/components/DataListLayout";
+import DataListLayout from "../theme/components/DataListLayout/DataListLayout";
 import { EMPTY_STRING } from "../../constants";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";
@@ -35,8 +35,8 @@ export const StackVisualizer = () => {
     <DataListLayout
       inputValue={stackVisualizerInput}
       setInputValue={setStackVisualizerInput}
-      firstButtonName={t("buttons.push")}
-      secondButtonName={t("buttons.pop")}
+      firstButtonName={t("stackVisualizer.buttons.add")}
+      secondButtonName={t("stackVisualizer.buttons.add")}
       firstButtonHandler={handleSetStackVisualizerListPush}
       secondButtonHandler={handleSetStackVisualizerListPop}
       dataList={stackList}
