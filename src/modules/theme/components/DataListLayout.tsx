@@ -42,7 +42,7 @@ export default function DataListLayout({
         <TextField
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          inputProps={{ "data-testid": "text-input" }}
+          inputProps={{ "data-testid": "data-list-text-input" }}
         />
         <Box
           width={180}
@@ -54,14 +54,14 @@ export default function DataListLayout({
           <DataVisualizeControl
             variant="contained"
             onClick={firstButtonHandler}
-            data-testid="add-button"
+            data-testid="data-list-add-button"
           >
             {firstButtonName}
           </DataVisualizeControl>
           <DataVisualizeControl
             variant="contained"
             onClick={secondButtonHandler}
-            data-testid="remove-button"
+            data-testid="data-list-remove-button"
           >
             {secondButtonName}
           </DataVisualizeControl>
@@ -73,7 +73,10 @@ export default function DataListLayout({
         ))}
       </Stack>
       <Link to={ROOT}>
-        <DataVisualizeControl variant="contained" data-testid="back-button">
+        <DataVisualizeControl
+          variant="contained"
+          data-testid="data-list-back-button"
+        >
           {t("dataListLayout.buttons.back")}
         </DataVisualizeControl>
       </Link>

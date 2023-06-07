@@ -15,6 +15,17 @@ describe("stackVisualizer test", () => {
     );
   });
 
+  test("Should have back button", () => {
+    render(
+      <Provider store={store}>
+        <StackVisualizer />
+      </Provider>,
+      { wrapper: BrowserRouter }
+    );
+
+    expect(screen.getByTestId("data-list-back-button")).toBeInTheDocument();
+  });
+
   test("Should process input and add button", () => {
     render(
       <Provider store={store}>
@@ -23,10 +34,10 @@ describe("stackVisualizer test", () => {
       { wrapper: BrowserRouter }
     );
 
-    const textInput = screen.getByTestId("text-input");
+    const textInput = screen.getByTestId("data-list-text-input");
     fireEvent.change(textInput, { target: { value: "stack elem" } });
 
-    const addButton = screen.getByTestId("add-button");
+    const addButton = screen.getByTestId("data-list-add-button");
     fireEvent.click(addButton);
     expect(screen.getByText(/stack elem/i)).toBeInTheDocument();
   });
@@ -39,9 +50,9 @@ describe("stackVisualizer test", () => {
       { wrapper: BrowserRouter }
     );
 
-    const removeButton = screen.getByTestId("remove-button");
+    const removeButton = screen.getByTestId("data-list-remove-button");
     fireEvent.click(removeButton);
-    
+
     await waitFor(() => {
       expect(screen.queryByText(/stack elem/i)).not.toBeInTheDocument();
     });

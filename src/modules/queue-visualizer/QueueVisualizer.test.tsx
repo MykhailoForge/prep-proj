@@ -23,7 +23,7 @@ describe("queueVisualizer test", () => {
       { wrapper: BrowserRouter }
     );
 
-    expect(screen.getByTestId("back-button")).toBeInTheDocument();
+    expect(screen.getByTestId("data-list-back-button")).toBeInTheDocument();
   });
 
   test("Should process input and add button", () => {
@@ -34,10 +34,10 @@ describe("queueVisualizer test", () => {
       { wrapper: BrowserRouter }
     );
 
-    const textInput = screen.getByTestId("text-input");
+    const textInput = screen.getByTestId("data-list-text-input");
     fireEvent.change(textInput, { target: { value: "queue elem" } });
 
-    const addButton = screen.getByTestId("add-button");
+    const addButton = screen.getByTestId("data-list-add-button");
     fireEvent.click(addButton);
 
     expect(screen.getByText(/queue elem/i)).toBeInTheDocument();
@@ -51,7 +51,7 @@ describe("queueVisualizer test", () => {
       { wrapper: BrowserRouter }
     );
 
-    const removeButton = screen.getByTestId("remove-button");
+    const removeButton = screen.getByTestId("data-list-remove-button");
     fireEvent.click(removeButton);
 
     await waitFor(() => {

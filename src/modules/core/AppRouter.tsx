@@ -14,8 +14,9 @@ function AppRouter() {
   const { i18n } = useTranslation();
 
   const handleLanguageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setLanguage(event.target.value));
-    i18n.changeLanguage(event.target.value);
+    const language = event.target.value;
+    dispatch(setLanguage(language));
+    i18n.changeLanguage(language);
   };
 
   return (
