@@ -2,12 +2,9 @@ import { describe, test, vi } from "vitest";
 import {
   render,
   screen,
-  fireEvent,
   cleanup,
   waitFor,
-  getAllByTestId,
   getByRole,
-  getByText,
 } from "@testing-library/react";
 import { store } from "../core/store/store";
 import { Provider } from "react-redux";
@@ -38,6 +35,7 @@ describe("languageSelector test", () => {
 
     await waitFor(() => userEvent.click(getByRole(container, "button")));
     await waitFor(() => userEvent.click(screen.getByText("ua")));
+    screen.debug();
     expect(mockChangeFunc.mock.calls).toHaveLength(1);
   });
 });

@@ -36,7 +36,7 @@ export const StackVisualizer = () => {
       inputValue={stackVisualizerInput}
       setInputValue={setStackVisualizerInput}
       firstButtonName={t("stackVisualizer.buttons.add")}
-      secondButtonName={t("stackVisualizer.buttons.add")}
+      secondButtonName={t("stackVisualizer.buttons.remove")}
       firstButtonHandler={handleSetStackVisualizerListPush}
       secondButtonHandler={handleSetStackVisualizerListPop}
       dataList={stackList}

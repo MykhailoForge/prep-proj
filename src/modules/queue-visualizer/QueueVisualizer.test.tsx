@@ -1,9 +1,19 @@
 import { describe, test } from "vitest";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+  queryByText,
+} from "@testing-library/react";
 import { QueueVisualizer } from "./QueueVisualizer";
 import { Provider } from "react-redux";
 import { store } from "../core/store/store";
 import { BrowserRouter } from "react-router-dom";
+
+const TEST_MSG = "queue elem";
+const QUEUE_FIRST_ELEM_MATCHER = new RegExp("1");
+const TEST_MSG_MATCHER = new RegExp(TEST_MSG, "i");
 
 describe("queueVisualizer test", () => {
   test("Should render component ", () => {
@@ -35,12 +45,12 @@ describe("queueVisualizer test", () => {
     );
 
     const textInput = screen.getByTestId("data-list-text-input");
-    fireEvent.change(textInput, { target: { value: "queue elem" } });
+    fireEvent.change(textInput, { target: { value: TEST_MSG } });
 
     const addButton = screen.getByTestId("data-list-add-button");
     fireEvent.click(addButton);
 
-    expect(screen.getByText(/queue elem/i)).toBeInTheDocument();
+    expect(screen.getByText(TEST_MSG_MATCHER)).toBeInTheDocument();
   });
 
   test("Should process pop button", async () => {
@@ -54,8 +64,12 @@ describe("queueVisualizer test", () => {
     const removeButton = screen.getByTestId("data-list-remove-button");
     fireEvent.click(removeButton);
 
+    const queueListContainer = screen.getByTestId("data-list-items-container");
+    
     await waitFor(() => {
-      expect(screen.queryByText(/1/i)).not.toBeInTheDocument();
+      expect(
+        queryByText(queueListContainer, QUEUE_FIRST_ELEM_MATCHER)
+      ).not.toBeInTheDocument();
     });
   });
 });

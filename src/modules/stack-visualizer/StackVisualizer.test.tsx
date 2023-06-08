@@ -1,9 +1,18 @@
 import { describe, test } from "vitest";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  queryByText,
+} from "@testing-library/react";
 import { StackVisualizer } from "./StackVisualizer";
 import { Provider } from "react-redux";
 import { store } from "../core/store/store";
 import { BrowserRouter } from "react-router-dom";
+
+const TEST_MSG = "stack elem";
+const TEST_MSG_MATCHER = new RegExp(TEST_MSG, "i");
 
 describe("stackVisualizer test", () => {
   test("Should render component", () => {
@@ -35,11 +44,11 @@ describe("stackVisualizer test", () => {
     );
 
     const textInput = screen.getByTestId("data-list-text-input");
-    fireEvent.change(textInput, { target: { value: "stack elem" } });
+    fireEvent.change(textInput, { target: { value: TEST_MSG } });
 
     const addButton = screen.getByTestId("data-list-add-button");
     fireEvent.click(addButton);
-    expect(screen.getByText(/stack elem/i)).toBeInTheDocument();
+    expect(screen.getByText(TEST_MSG_MATCHER)).toBeInTheDocument();
   });
 
   test("Should process pop button", async () => {
@@ -53,8 +62,12 @@ describe("stackVisualizer test", () => {
     const removeButton = screen.getByTestId("data-list-remove-button");
     fireEvent.click(removeButton);
 
+    const queueListContainer = screen.getByTestId("data-list-items-container");
+
     await waitFor(() => {
-      expect(screen.queryByText(/stack elem/i)).not.toBeInTheDocument();
+      expect(
+        queryByText(queueListContainer, TEST_MSG_MATCHER)
+      ).not.toBeInTheDocument();
     });
   });
 });

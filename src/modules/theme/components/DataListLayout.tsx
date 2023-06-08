@@ -67,7 +67,7 @@ export default function DataListLayout({
           </DataVisualizeControl>
         </Box>
       </Box>
-      <Stack>
+      <Stack data-testid="data-list-items-container">
         {dataList.map((elem) => (
           <ListItem key={elem.id}>{elem.item}</ListItem>
         ))}
