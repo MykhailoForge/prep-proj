@@ -6,35 +6,26 @@ const STACK_LANG_MATCHER =
   uaLocalization.translation.stackVisualizer.buttons.add;
 
 const inputTextAddNewStackItem = () => {
-  cy.get(`[data-testid="data-list-text-input"]`).type(STACK_TEST_MSG);
-  cy.get(`[data-testid="data-list-add-button"]`).click();
-  cy.get(`[data-testid="data-list-items-container"]`)
-    .children()
-    .should("have.length", 4);
+  cy.getBySel(`data-list-text-input`).type(STACK_TEST_MSG);
+  cy.getBySel(`data-list-add-button`).click();
+  cy.getBySel(`data-list-items-container`).children().should("have.length", 4);
   cy.contains(STACK_TEST_MSG);
 };
 
 const removeStackItem = () => {
-  cy.get(`[data-testid="data-list-remove-button"]`).click();
-  cy.get(`[data-testid="data-list-items-container"]`)
-    .children()
-    .should("have.length", 2);
+  cy.getBySel(`data-list-remove-button`).click();
+  cy.getBySel(`data-list-items-container`).children().should("have.length", 2);
 };
 
 const processStackBackButton = () => {
-  cy.get(`[data-testid="data-list-back-button"]`).click();
+  cy.getBySel(`data-list-back-button`).click();
   cy.location("pathname").should("eq", "/");
 };
 
 const processStackSelectLanguage = () => {
-  cy.get(`[data-testid="language-selector-body"]`).click();
-  cy.get(`[data-testid="sentinelStart"]`)
-    .next()
-    .children()
-    .get("ul li")
-    .last()
-    .click();
-  cy.get(`[data-testid="data-list-add-button"]`).contains(STACK_LANG_MATCHER);
+  cy.getBySel(`language-selector-body`).click();
+  cy.getBySel(`sentinelStart`).next().children().get("ul li").last().click();
+  cy.getBySel(`data-list-add-button`).contains(STACK_LANG_MATCHER);
 };
 
 describe(`Testing "${PATH_NAME_STACK}" route`, () => {
