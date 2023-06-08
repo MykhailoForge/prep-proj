@@ -13,14 +13,22 @@ function App() {
 
   return (
     <CentredContainer500W minHeight={500} alignItems={"center"}>
-      <Typography>{t("app.typography.hi")}</Typography>
+      <Typography data-testid="app-typograpghy-greetings">
+        {t("app.typography.hi")}
+      </Typography>
       <Link to={STACK_VISUALIZER}>
-        <DataVisualizeControl variant="contained">
+        <DataVisualizeControl
+          data-testid="stack-route-button"
+          variant="contained"
+        >
           {t("app.buttons.toStack")}
         </DataVisualizeControl>
       </Link>
       <Link to={QUEUE_VISUALIZER}>
-        <DataVisualizeControl variant="contained">
+        <DataVisualizeControl
+          data-testid="queue-route-button"
+          variant="contained"
+        >
           {t("app.buttons.toQueue")}
         </DataVisualizeControl>
       </Link>
