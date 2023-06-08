@@ -28,7 +28,8 @@ const processStackBackButton = () => {
 
 const processStackSelectLanguage = () => {
   cy.get(`[data-testid="language-selector-body"]`).click();
-  cy.get(".css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper")
+  cy.get(`[data-testid="sentinelStart"]`)
+    .next()
     .children()
     .get("ul li")
     .last()
