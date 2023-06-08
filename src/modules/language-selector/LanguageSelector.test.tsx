@@ -15,7 +15,7 @@ beforeEach(() => vi.resetAllMocks());
 
 afterEach(() => cleanup());
 
-const mockChangeFunc = vi.fn().mockImplementation(() => console.log("Hello"));
+const mockChangeFunc = vi.fn();
 
 describe("languageSelector test", () => {
   test("Should render component", () => {
@@ -35,7 +35,6 @@ describe("languageSelector test", () => {
 
     await waitFor(() => userEvent.click(getByRole(container, "button")));
     await waitFor(() => userEvent.click(screen.getByText("ua")));
-    screen.debug();
     expect(mockChangeFunc.mock.calls).toHaveLength(1);
   });
 });
