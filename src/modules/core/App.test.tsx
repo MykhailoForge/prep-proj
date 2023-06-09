@@ -1,15 +1,15 @@
 import { describe, test } from "vitest";
-import { render, screen } from "@testing-library/react";
-import { QueueVisualizer } from "../modules/queue-visualizer/QueueVisualizer";
+import { render } from "@testing-library/react";
+import App from "./App";
 import { Provider } from "react-redux";
-import { store } from "../modules/core/store/store";
+import { store } from "./store/store";
 import { BrowserRouter } from "react-router-dom";
 
-describe("queueVisualizer test", () => {
+describe("App test", () => {
   test("Should render component", () => {
     render(
       <Provider store={store}>
-        <QueueVisualizer />
+        <App />
       </Provider>,
       { wrapper: BrowserRouter }
     );

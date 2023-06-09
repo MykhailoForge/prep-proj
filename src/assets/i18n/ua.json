@@ -25,11 +25,6 @@
       "buttons": {
         "back": "Повернутись"
       }
-    },
-    "languageSelector" : {
-      "labels": {
-        "language": "Мова"
-      }
     }
   }
 }
