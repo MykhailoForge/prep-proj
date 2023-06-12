@@ -6,26 +6,39 @@ const STACK_LANG_MATCHER =
   uaLocalization.translation.stackVisualizer.buttons.add;
 
 const inputTextAddNewStackItem = () => {
-  cy.getBySel(`data-list-text-input`).type(STACK_TEST_MSG);
-  cy.getBySel(`data-list-add-button`).click();
-  cy.getBySel(`data-list-items-container`).children().should("have.length", 4);
-  cy.contains(STACK_TEST_MSG);
+  cy.getByTestId("data-list-text-input").type(STACK_TEST_MSG);
+  cy.getByTestId("data-list-add-button").click();
+  cy.getByTestId("stack-list-items-container")
+    .getByTestId("data-list-item")
+    .contains(STACK_TEST_MSG)
+    .should("exist");
+  cy.getByTestId("stack-list-items-container")
+    .getByTestId("data-list-item")
+    .should("have.length", 4);
 };
 
 const removeStackItem = () => {
-  cy.getBySel(`data-list-remove-button`).click();
-  cy.getBySel(`data-list-items-container`).children().should("have.length", 2);
+  cy.getByTestId("data-list-remove-button").click();
+  cy.getByTestId("stack-list-items-container")
+    .getByTestId("data-list-item")
+    .contains("3")
+    .should("not.exist");
+  cy.getByTestId("stack-list-items-container")
+    .getByTestId("data-list-item")
+    .should("have.length", 2);
 };
 
 const processStackBackButton = () => {
-  cy.getBySel(`data-list-back-button`).click();
+  cy.getByTestId("data-list-back-button").click();
   cy.location("pathname").should("eq", "/");
 };
 
 const processStackSelectLanguage = () => {
-  cy.getBySel(`language-selector-body`).click();
-  cy.getBySel(`sentinelStart`).next().children().get("ul li").last().click();
-  cy.getBySel(`data-list-add-button`).contains(STACK_LANG_MATCHER);
+  cy.getByTestId(`language-selector-body`).click();
+  cy.getByTestId(`sentinelStart`).next().children().get("ul li").last().click();
+  cy.getByTestId(`data-list-add-button`)
+    .contains(STACK_LANG_MATCHER)
+    .should("exist");
 };
 
 describe(`Testing "${PATH_NAME_STACK}" route`, () => {

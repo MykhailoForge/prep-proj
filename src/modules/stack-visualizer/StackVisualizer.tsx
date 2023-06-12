@@ -40,6 +40,7 @@ export const StackVisualizer = () => {
       firstButtonHandler={handleSetStackVisualizerListPush}
       secondButtonHandler={handleSetStackVisualizerListPop}
       dataList={stackList}
+      testIdSpec="stack-list-items-container"
     />
   );
 };

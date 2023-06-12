@@ -40,6 +40,7 @@ export const QueueVisualizer = () => {
       firstButtonHandler={handleSetQueueVisualizerEnqueue}
       secondButtonHandler={handleSetQueueVisualizerDequeue}
       dataList={queueList}
+      testIdSpec="queue-list-items-container"
     />
   );
 };

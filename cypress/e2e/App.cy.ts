@@ -2,19 +2,21 @@ import uaLocalization from "../../src/assets/i18n/ua.json";
 const APP_LANG_MATCHER = uaLocalization.translation.app.typography.hi;
 
 const handleClickStackButton = () => {
-  cy.getBySel("stack-route-button").click();
+  cy.getByTestId("stack-route-button").click();
   cy.location("pathname").should("eq", "/stack");
 };
 
 const handleClickQueueButton = () => {
-  cy.getBySel(`queue-route-button`).click();
+  cy.getByTestId(`queue-route-button`).click();
   cy.location("pathname").should("eq", "/queue");
 };
 
 const processAppSelectLanguage = () => {
-  cy.getBySel(`language-selector-body`).click();
-  cy.getBySel(`sentinelStart`).next().children().get("ul li").last().click();
-  cy.getBySel(`app-typograpghy-greetings`).contains(APP_LANG_MATCHER);
+  cy.getByTestId(`language-selector-body`).click();
+  cy.getByTestId(`sentinelStart`).next().children().get("ul li").last().click();
+  cy.getByTestId(`app-typograpghy-greetings`)
+    .contains(APP_LANG_MATCHER)
+    .should("exist");
 };
 
 describe(`Testing "/" route`, () => {
