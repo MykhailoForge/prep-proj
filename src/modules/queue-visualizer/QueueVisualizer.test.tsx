@@ -64,7 +64,7 @@ describe("queueVisualizer test", () => {
     const removeButton = screen.getByTestId("data-list-remove-button");
     fireEvent.click(removeButton);
 
-    const queueListContainer = screen.getByTestId("data-list-items-container");
+    const queueListContainer = screen.getByTestId("queue-list-items-container");
     
     await waitFor(() => {
       expect(
