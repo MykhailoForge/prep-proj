@@ -62,7 +62,7 @@ describe("stackVisualizer test", () => {
     const removeButton = screen.getByTestId("data-list-remove-button");
     fireEvent.click(removeButton);
 
-    const queueListContainer = screen.getByTestId("data-list-items-container");
+    const queueListContainer = screen.getByTestId("stack-list-items-container");
 
     await waitFor(() => {
       expect(
