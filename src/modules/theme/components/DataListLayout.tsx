@@ -18,6 +18,7 @@ interface DataListLayoutProps {
   firstButtonName: string;
   secondButtonName: string;
   dataList: stackArrayItem[] | queueArrayItem[];
+  testIdSpec: string;
 }
 
 export default function DataListLayout({
@@ -28,6 +29,7 @@ export default function DataListLayout({
   firstButtonHandler,
   secondButtonHandler,
   dataList,
+  testIdSpec,
 }: DataListLayoutProps) {
   const { t } = useTranslation();
 
@@ -67,9 +69,11 @@ export default function DataListLayout({
           </DataVisualizeControl>
         </Box>
       </Box>
-      <Stack data-testid="data-list-items-container">
+      <Stack data-testid={testIdSpec}>
         {dataList.map((elem) => (
-          <ListItem key={elem.id}>{elem.item}</ListItem>
+          <ListItem data-testid="data-list-item" key={elem.id}>
+            {elem.item}
+          </ListItem>
         ))}
       </Stack>
       <Link to={ROOT}>
