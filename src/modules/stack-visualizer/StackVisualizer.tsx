@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../core/store/store";
 import {
   stackVisualizerListPush,
@@ -9,6 +9,7 @@ import DataListLayout from "../theme/components/DataListLayout";
 import { EMPTY_STRING } from "../../constants";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";
+import { fetchStackList } from "./store/stackVisualizerAsync";
 
 export const StackVisualizer = () => {
   const [stackVisualizerInput, setStackVisualizerInput] =
@@ -17,6 +18,14 @@ export const StackVisualizer = () => {
 
   const stackList = useAppSelector(stackVisualizerSelector);
   const dispatch = useAppDispatch();
+
+  const fetchStackListFunc = () => {
+    dispatch(fetchStackList());
+  };
+
+  useEffect(() => {
+    fetchStackListFunc();
+  }, []);
 
   const handleSetStackVisualizerListPush = () => {
     if (stackVisualizerInput) {

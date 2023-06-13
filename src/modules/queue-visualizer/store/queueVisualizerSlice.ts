@@ -1,25 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../core/store/store";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { v4 } from "uuid";
 import { queueArrayItem } from "../queueVisualizerModels";
+import { fetchQueueList } from "./queueVisualizerAsync";
 
-const initialState: queueArrayItem[] = [
-  { id: v4(), item: "1" },
-  { id: v4(), item: "2" },
-  { id: v4(), item: "3" },
-];
+const initialState = {
+  contents: [],
+  isLoading: false,
+  error: null,
+};
 
 export const queueVisualizerSlice = createSlice({
   name: "queueVisualizer",
   initialState,
   reducers: {
     queueVisualzierEnqueue: (state, action: PayloadAction<queueArrayItem>) => {
-      state.push(action.payload);
+      state.contents.push(action.payload);
     },
     queueVisualizerDequeue: (state) => {
-      state.shift();
+      state.contents.shift();
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchQueueList.fulfilled, (state, action) => {
+      state.contents = action.payload;
+    });
   },
 });
 
@@ -29,4 +34,4 @@ export const { queueVisualzierEnqueue, queueVisualizerDequeue } =
 export default queueVisualizerSlice.reducer;
 
 export const queueVisualizerSelector = (state: RootState) =>
-  state.queueVisualizer;
+  state.queueVisualizer.contents;

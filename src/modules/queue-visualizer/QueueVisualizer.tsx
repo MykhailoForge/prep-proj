@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DataListLayout from "../theme/components/DataListLayout";
 import { useAppDispatch, useAppSelector } from "../core/store/store";
 import {
@@ -9,14 +9,22 @@ import {
 import { EMPTY_STRING } from "../../constants";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";
+import { fetchQueueList } from "./store/queueVisualizerAsync";
 
 export const QueueVisualizer = () => {
   const [queueVisualizerInput, setQueueVisualizerInput] =
     useState<string>(EMPTY_STRING);
   const { t } = useTranslation();
-
   const queueList = useAppSelector(queueVisualizerSelector);
   const dispatch = useAppDispatch();
+
+  const fetchQueueListFunc = () => {
+    dispatch(fetchQueueList());
+  };
+  
+  useEffect(() => {
+    fetchQueueListFunc();
+  }, []);
 
   const handleSetQueueVisualizerEnqueue = () => {
     if (queueVisualizerInput) {
