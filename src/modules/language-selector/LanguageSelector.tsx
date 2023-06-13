@@ -21,10 +21,14 @@ export const LanguageSelector = ({ changeHandler }: LanguageSelectorProps) => {
         onChange={changeHandler}
         fullWidth
         value={selectedLanguage}
-        data-testid="language-selector-body"
+        inputProps={{ "data-testid": "language-selector-body" }}
       >
         {languageArr.map((langItem) => (
-          <MenuItem value={langItem.item} key={langItem.id}>
+          <MenuItem
+            value={langItem.item}
+            key={langItem.id}
+            data-testid={`language-selector-option-${langItem.item}`}
+          >
             {langItem.item}
           </MenuItem>
         ))}

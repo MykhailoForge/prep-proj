@@ -12,8 +12,8 @@ const handleClickQueueButton = () => {
 };
 
 const processAppSelectLanguage = () => {
-  cy.getByTestId(`language-selector-body`).click();
-  cy.getByTestId(`sentinelStart`).next().children().get("ul li").last().click();
+  cy.getByTestId(`language-selector-body`).parent().click();
+  cy.getByTestId(`language-selector-option-ua`).click();
   cy.getByTestId(`app-typograpghy-greetings`)
     .contains(APP_LANG_MATCHER)
     .should("exist");
