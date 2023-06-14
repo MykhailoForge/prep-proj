@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { StackVisualizer } from "../stack-visualizer/StackVisualizer.tsx";
 import { QueueVisualizer } from "../queue-visualizer/QueueVisualizer.tsx";
 import { QUEUE_VISUALIZER, ROOT, STACK_VISUALIZER } from "./routes.ts";
@@ -19,10 +19,13 @@ function AppRouter() {
   const { i18n } = useTranslation();
   const languageArr = useAppSelector(languageArrSelector);
 
-  useEffect(() => {
+  const handleFetchLanguage = useCallback(() => {
     dispatch(fetchLangList());
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    handleFetchLanguage();
+  }, [handleFetchLanguage]);
 
   const handleLanguageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const language = event.target.value;

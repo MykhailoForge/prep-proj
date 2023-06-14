@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../core/store/store";
 import {
   stackVisualizerSelector,
@@ -19,14 +19,13 @@ export const StackVisualizer = () => {
   const stackList = useAppSelector(stackVisualizerSelector);
   const dispatch = useAppDispatch();
 
-  const fetchStackListFunc = () => {
+  const fetchStackListFunc = useCallback(() => {
     dispatch(fetchStackList());
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     fetchStackListFunc();
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fetchStackListFunc]);
 
   const handleSetStackVisualizerListPush = () => {
     if (stackVisualizerInput) {
