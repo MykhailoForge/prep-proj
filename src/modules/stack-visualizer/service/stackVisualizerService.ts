@@ -3,26 +3,12 @@ import { stackArrayItem } from "../stackVisualizerModels";
 import { dbStackItemArray } from "./stackVIsualizerDB";
 
 export const getStackList = () =>
-  new Promise((resolve, reject) => {
-    if (!dbStackItemArray) {
-      return setTimeout(
-        () => reject(new Error("StackList not found")),
-        MOCK_DELAY
-      );
-    }
-
+  new Promise((resolve) => {
     setTimeout(() => resolve(dbStackItemArray), MOCK_DELAY);
   });
 
 export const addStackItem = (stackItem: stackArrayItem) =>
-  new Promise((resolve, reject) => {
-    if (!stackItem) {
-      return setTimeout(
-        () => reject(new Error("No StackItem provided")),
-        MOCK_DELAY
-      );
-    }
-
+  new Promise((resolve) => {
     setTimeout(() => resolve(stackItem), MOCK_DELAY);
   });
 
