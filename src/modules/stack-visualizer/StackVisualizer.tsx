@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../core/store/store";
 import {
-  stackVisualizerListPush,
-  stackVisualizerListPop,
   stackVisualizerSelector,
+  pushStackItem,
+  popStackItem,
 } from "../stack-visualizer/store/stackVisualizerSlice";
 import DataListLayout from "../theme/components/DataListLayout";
 import { EMPTY_STRING } from "../../constants";
@@ -29,15 +29,13 @@ export const StackVisualizer = () => {
 
   const handleSetStackVisualizerListPush = () => {
     if (stackVisualizerInput) {
-      dispatch(
-        stackVisualizerListPush({ id: v4(), item: stackVisualizerInput })
-      );
+      dispatch(pushStackItem({ id: v4(), item: stackVisualizerInput }));
     }
     setStackVisualizerInput(EMPTY_STRING);
   };
 
   const handleSetStackVisualizerListPop = () => {
-    dispatch(stackVisualizerListPop());
+    dispatch(popStackItem());
   };
 
   return (

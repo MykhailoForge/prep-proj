@@ -1,13 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../../core/store/store";
-import type { PayloadAction } from "@reduxjs/toolkit";
 import { queueArrayItem } from "../queueVisualizerModels";
-import { getQueueList } from "../service/queueVIsualizerService";
+import {
+  addQueueItem,
+  getQueueList,
+  removeQueueItem,
+} from "../service/queueVIsualizerService";
 
-const initialState = {
+interface queueSliceInitialState {
+  queueItems: queueArrayItem[];
+  isLoading: boolean;
+}
+
+const initialState: queueSliceInitialState = {
   queueItems: [],
   isLoading: false,
-  error: null,
 };
 
 export const fetchQueueList = createAsyncThunk(
@@ -19,26 +26,41 @@ export const fetchQueueList = createAsyncThunk(
   }
 );
 
+export const enqueueItem = createAsyncThunk(
+  "queueVisualizer/enqueueItem",
+  async (queueItem: queueArrayItem) => {
+    const res = await addQueueItem(queueItem);
+
+    return res;
+  }
+);
+
+export const dequeueItem = createAsyncThunk(
+  "queueVisualizer/dequeueItem",
+  async () => {
+    const res = await removeQueueItem();
+
+    return res;
+  }
+);
+
 export const queueVisualizerSlice = createSlice({
   name: "queueVisualizer",
   initialState,
-  reducers: {
-    queueVisualzierEnqueue: (state, action: PayloadAction<queueArrayItem>) => {
-      state.queueItems.push(action.payload);
-    },
-    queueVisualizerDequeue: (state) => {
-      state.queueItems.shift();
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchQueueList.fulfilled, (state, action) => {
-      state.queueItems = action.payload;
-    });
+    builder
+      .addCase(fetchQueueList.fulfilled, (state, action) => {
+        state.queueItems = action.payload;
+      })
+      .addCase(enqueueItem.fulfilled, (state, action) => {
+        state.queueItems.push(action.payload);
+      })
+      .addCase(dequeueItem.fulfilled, (state) => {
+        state.queueItems.shift();
+      });
   },
 });
-
-export const { queueVisualzierEnqueue, queueVisualizerDequeue } =
-  queueVisualizerSlice.actions;
 
 export default queueVisualizerSlice.reducer;
 

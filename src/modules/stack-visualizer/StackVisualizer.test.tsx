@@ -35,7 +35,7 @@ describe("stackVisualizer test", () => {
     expect(screen.getByTestId("data-list-back-button")).toBeInTheDocument();
   });
 
-  test("Should process input and add button", () => {
+  test("Should process input and add button", async () => {
     render(
       <Provider store={store}>
         <StackVisualizer />
@@ -46,9 +46,11 @@ describe("stackVisualizer test", () => {
     const textInput = screen.getByTestId("data-list-text-input");
     fireEvent.change(textInput, { target: { value: TEST_MSG } });
 
-    const addButton = screen.getByTestId("data-list-add-button");
-    fireEvent.click(addButton);
-    expect(screen.getByText(TEST_MSG_MATCHER)).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId("data-list-add-button"));
+
+    await waitFor(() =>
+      expect(screen.getByText(TEST_MSG_MATCHER)).toBeInTheDocument()
+    );
   });
 
   test("Should process pop button", async () => {
