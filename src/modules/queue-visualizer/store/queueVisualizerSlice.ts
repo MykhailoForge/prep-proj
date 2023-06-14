@@ -5,7 +5,7 @@ import {
   addQueueItem,
   getQueueList,
   removeQueueItem,
-} from "../service/queueVIsualizerService";
+} from "../service/queueVisualizerService";
 
 interface queueSliceInitialState {
   queueItems: queueArrayItem[];

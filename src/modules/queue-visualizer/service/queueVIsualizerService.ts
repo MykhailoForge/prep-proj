@@ -1,4 +1,4 @@
-import { MOCK_DELAY } from "../../../constants";
+import { MOCK_DELAY } from "../../../constants/apiConstants";
 import { queueArrayItem } from "../queueVisualizerModels";
 import { dbQueueInitialState } from "./queueVisualizerDB";
 

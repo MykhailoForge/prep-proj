@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { coreState } from "./types";
 import { RootState } from "./store";
-import { LANGUAGE_KEYS } from "../../../constants";
+import { LANGUAGE_KEYS } from "../../../constants/selectConstants";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import {
   getLangList,

@@ -1,4 +1,4 @@
-import { LANGUAGE_KEYS } from "../../../constants";
+import { LANGUAGE_KEYS } from "../../../constants/selectConstants";
 import { v4 } from "uuid";
 
 export const dbLanguageSelectArr = [

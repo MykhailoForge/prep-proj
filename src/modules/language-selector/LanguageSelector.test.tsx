@@ -10,6 +10,7 @@ import { store } from "../core/store/store";
 import { Provider } from "react-redux";
 import { LanguageSelector } from "./LanguageSelector";
 import userEvent from "@testing-library/user-event";
+import { v4 } from "uuid";
 
 beforeEach(() => vi.resetAllMocks());
 
@@ -17,8 +18,8 @@ afterEach(() => cleanup());
 
 const mockChangeFunc = vi.fn();
 const mockLanngArr = [
-  { id: "asdasdasd", item: "en" },
-  { id: "asxxdasdasd", item: "ua" },
+  { id: v4(), item: "en" },
+  { id: v4(), item: "ua" },
 ];
 
 describe("languageSelector test", () => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import DataListLayout from "../theme/components/DataListLayout";
 import { useAppDispatch, useAppSelector } from "../core/store/store";
 import {
@@ -6,7 +6,7 @@ import {
   enqueueItem,
   queueVisualizerSelector,
 } from "../queue-visualizer/store/queueVisualizerSlice";
-import { EMPTY_STRING } from "../../constants";
+import { EMPTY_STRING } from "../../constants/textConstants";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";
 import { fetchQueueList } from "./store/queueVisualizerSlice";
@@ -18,14 +18,13 @@ export const QueueVisualizer = () => {
   const queueList = useAppSelector(queueVisualizerSelector);
   const dispatch = useAppDispatch();
 
-  const fetchQueueListFunc = () => {
+  const fetchQueueListFunc = useCallback(() => {
     dispatch(fetchQueueList());
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     fetchQueueListFunc();
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fetchQueueListFunc]);
 
   const handleSetQueueVisualizerEnqueue = () => {
     if (queueVisualizerInput) {

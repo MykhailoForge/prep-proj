@@ -1,4 +1,4 @@
-import { MOCK_DELAY } from "../../../constants";
+import { MOCK_DELAY } from "../../../constants/apiConstants";
 import { stackArrayItem } from "../stackVisualizerModels";
 import { dbStackItemArray } from "./stackVIsualizerDB";
 
