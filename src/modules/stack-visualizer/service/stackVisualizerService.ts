@@ -1,6 +1,7 @@
-import { MOCK_DELAY } from "../../../constants/apiConstants";
 import { stackArrayItem } from "../stackVisualizerModels";
 import { dbStackItemArray } from "./stackVIsualizerDB";
+
+const MOCK_DELAY = 250;
 
 export const getStackList = () =>
   new Promise((resolve) => {

@@ -1,5 +1,6 @@
 import { dbLanguageSelectArr } from "./languageSelectorDB";
-import { MOCK_DELAY } from "../../../constants/apiConstants";
+
+const MOCK_DELAY = 250;
 
 export const getLangList = () =>
   new Promise((resolve) =>

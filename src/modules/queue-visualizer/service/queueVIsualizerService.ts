@@ -1,6 +1,7 @@
-import { MOCK_DELAY } from "../../../constants/apiConstants";
 import { queueArrayItem } from "../queueVisualizerModels";
 import { dbQueueInitialState } from "./queueVisualizerDB";
+
+const MOCK_DELAY = 250;
 
 export const getQueueList = () =>
   new Promise((resolve) => {
