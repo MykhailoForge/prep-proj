@@ -8,17 +8,14 @@ import { v4 } from "uuid";
 import { dbStackItemArray } from "./stackVIsualizerDB";
 
 test("should resolve with proper array", async () => {
-  const getStackListCallResult = await getStackList();
-  expect(getStackListCallResult).toBe(dbStackItemArray);
+  await expect(getStackList()).resolves.toBe(dbStackItemArray);
 });
 
 test("should resolve with proper item", async () => {
   const mockStackItem = { id: v4(), item: "item" };
-  const addStackItemCallResult = await addStackItem(mockStackItem);
-  expect(addStackItemCallResult).toBe(mockStackItem);
+  await expect(addStackItem(mockStackItem)).resolves.toBe(mockStackItem);
 });
 
 test("should resolve with true", async () => {
-  const removeStackItemCallResult = await removeStackItem();
-  expect(removeStackItemCallResult).toBe(true);
+  await expect(removeStackItem()).resolves.toBe(true);
 });

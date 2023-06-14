@@ -8,17 +8,14 @@ import { v4 } from "uuid";
 import { dbQueueInitialState } from "./queueVisualizerDB";
 
 test("should resolve with proper array", async () => {
-  const getQueueListCallResult = await getQueueList();
-  expect(getQueueListCallResult).toBe(dbQueueInitialState);
+  await expect(getQueueList()).resolves.toBe(dbQueueInitialState);
 });
 
 test("should resolve with proper item", async () => {
   const mockQueueItem = { id: v4(), item: "item" };
-  const addQueueItemCallResult = await addQueueItem(mockQueueItem);
-  expect(addQueueItemCallResult).toBe(mockQueueItem);
+  await expect(addQueueItem(mockQueueItem)).resolves.toBe(mockQueueItem);
 });
 
 test("should resolve with true", async () => {
-  const removeQueueItemCallResult = await removeQueueItem();
-  expect(removeQueueItemCallResult).toBe(true);
+  await expect(removeQueueItem()).resolves.toBe(true);
 });
