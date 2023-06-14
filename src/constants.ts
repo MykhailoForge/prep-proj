@@ -4,3 +4,5 @@ export const LANGUAGE_KEYS = {
   EN: "en",
   UA: "ua",
 };
+
+export const MOCK_DELAY = 250;

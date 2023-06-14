@@ -9,7 +9,7 @@ import {
 import { EMPTY_STRING } from "../../constants";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";
-import { fetchQueueList } from "./store/queueVisualizerAsync";
+import { fetchQueueList } from "./store/queueVisualizerSlice";
 
 export const QueueVisualizer = () => {
   const [queueVisualizerInput, setQueueVisualizerInput] =
@@ -21,7 +21,7 @@ export const QueueVisualizer = () => {
   const fetchQueueListFunc = () => {
     dispatch(fetchQueueList());
   };
-  
+
   useEffect(() => {
     fetchQueueListFunc();
   }, []);

@@ -9,7 +9,7 @@ import DataListLayout from "../theme/components/DataListLayout";
 import { EMPTY_STRING } from "../../constants";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";
-import { fetchStackList } from "./store/stackVisualizerAsync";
+import { fetchStackList } from "./store/stackVisualizerSlice";
 
 export const StackVisualizer = () => {
   const [stackVisualizerInput, setStackVisualizerInput] =
