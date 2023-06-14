@@ -24,6 +24,7 @@ export const QueueVisualizer = () => {
 
   useEffect(() => {
     fetchQueueListFunc();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSetQueueVisualizerEnqueue = () => {

@@ -1,17 +1,18 @@
 import Box from "@mui/material/Box";
 import { useAppSelector } from "../core/store/store";
-import {
-  languageArrSelector,
-  selectedLanguageSelector,
-} from "../core/store/coreSlice";
+import { selectedLanguageSelector } from "../core/store/coreSlice";
 import { MenuItem, TextField } from "@mui/material";
+import { languageArrItem } from "./languageSelectorModels";
 
 interface LanguageSelectorProps {
   changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  languageArr: languageArrItem[];
 }
 
-export const LanguageSelector = ({ changeHandler }: LanguageSelectorProps) => {
-  const languageArr = useAppSelector(languageArrSelector);
+export const LanguageSelector = ({
+  changeHandler,
+  languageArr,
+}: LanguageSelectorProps) => {
   const selectedLanguage = useAppSelector(selectedLanguageSelector);
 
   return (
