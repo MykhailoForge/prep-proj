@@ -1,17 +1,35 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { coreState } from "./types";
 import { RootState } from "./store";
-import { LANGUAGE_KEYS } from "../../../constants";
-import { v4 } from "uuid";
+import { LANGUAGE_KEYS } from "../../language-selector/service/languageSelectorDB";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import {
+  getLangList,
+  setLangSelection,
+} from "../../language-selector/service/languageSelectorService";
 
 const initialState: coreState = {
   selectedLanguage: LANGUAGE_KEYS.EN,
-  languageSelectArr: [
-    { id: v4(), item: LANGUAGE_KEYS.EN },
-    { id: v4(), item: LANGUAGE_KEYS.UA },
-  ],
+  languageSelectArr: [],
 };
+
+export const fetchLangList = createAsyncThunk(
+  "core/fetchLangList",
+  async () => {
+    const res = await getLangList();
+
+    return res;
+  }
+);
+
+export const setLocalization = createAsyncThunk(
+  "core/setLocalization",
+  async (language: string) => {
+    const res = await setLangSelection(language);
+
+    return res;
+  }
+);
 
 export const coreSlice = createSlice({
   name: "core",
@@ -21,9 +39,16 @@ export const coreSlice = createSlice({
       state.selectedLanguage = action.payload;
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchLangList.fulfilled, (state, action) => {
+        state.languageSelectArr = action.payload;
+      })
+      .addCase(setLocalization.fulfilled, (state, action) => {
+        state.selectedLanguage = action.payload;
+      });
+  },
 });
-
-export const { setLanguage } = coreSlice.actions;
 
 export default coreSlice.reducer;
 

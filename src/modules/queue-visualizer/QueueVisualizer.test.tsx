@@ -36,7 +36,7 @@ describe("queueVisualizer test", () => {
     expect(screen.getByTestId("data-list-back-button")).toBeInTheDocument();
   });
 
-  test("Should process input and add button", () => {
+  test("Should process input and add button", async () => {
     render(
       <Provider store={store}>
         <QueueVisualizer />
@@ -50,7 +50,9 @@ describe("queueVisualizer test", () => {
     const addButton = screen.getByTestId("data-list-add-button");
     fireEvent.click(addButton);
 
-    expect(screen.getByText(TEST_MSG_MATCHER)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText(TEST_MSG_MATCHER)).toBeInTheDocument();
+    });
   });
 
   test("Should process pop button", async () => {
@@ -65,7 +67,7 @@ describe("queueVisualizer test", () => {
     fireEvent.click(removeButton);
 
     const queueListContainer = screen.getByTestId("queue-list-items-container");
-    
+
     await waitFor(() => {
       expect(
         queryByText(queueListContainer, QUEUE_FIRST_ELEM_MATCHER)

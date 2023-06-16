@@ -1,32 +1,68 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../../core/store/store";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { v4 } from "uuid";
 import { queueArrayItem } from "../queueVisualizerModels";
+import {
+  addQueueItem,
+  getQueueList,
+  removeQueueItem,
+} from "../service/queueVisualizerService";
 
-const initialState: queueArrayItem[] = [
-  { id: v4(), item: "1" },
-  { id: v4(), item: "2" },
-  { id: v4(), item: "3" },
-];
+interface queueSliceInitialState {
+  queueItems: queueArrayItem[];
+  isLoading: boolean;
+}
+
+const initialState: queueSliceInitialState = {
+  queueItems: [],
+  isLoading: false,
+};
+
+export const fetchQueueList = createAsyncThunk(
+  "queueVisualizer/fetchQueueList",
+  async () => {
+    const res = await getQueueList();
+
+    return res;
+  }
+);
+
+export const enqueueItem = createAsyncThunk(
+  "queueVisualizer/enqueueItem",
+  async (queueItem: queueArrayItem) => {
+    const res = await addQueueItem(queueItem);
+
+    return res;
+  }
+);
+
+export const dequeueItem = createAsyncThunk(
+  "queueVisualizer/dequeueItem",
+  async () => {
+    const res = await removeQueueItem();
+
+    return res;
+  }
+);
 
 export const queueVisualizerSlice = createSlice({
   name: "queueVisualizer",
   initialState,
-  reducers: {
-    queueVisualzierEnqueue: (state, action: PayloadAction<queueArrayItem>) => {
-      state.push(action.payload);
-    },
-    queueVisualizerDequeue: (state) => {
-      state.shift();
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchQueueList.fulfilled, (state, action) => {
+        state.queueItems = action.payload;
+      })
+      .addCase(enqueueItem.fulfilled, (state, action) => {
+        state.queueItems.push(action.payload);
+      })
+      .addCase(dequeueItem.fulfilled, (state) => {
+        state.queueItems.shift();
+      });
   },
 });
-
-export const { queueVisualzierEnqueue, queueVisualizerDequeue } =
-  queueVisualizerSlice.actions;
 
 export default queueVisualizerSlice.reducer;
 
 export const queueVisualizerSelector = (state: RootState) =>
-  state.queueVisualizer;
+  state.queueVisualizer.queueItems;

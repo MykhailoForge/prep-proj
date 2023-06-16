@@ -1,32 +1,68 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../../core/store/store";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { v4 } from "uuid";
 import { stackArrayItem } from "../stackVisualizerModels";
+import {
+  addStackItem,
+  getStackList,
+  removeStackItem,
+} from "../service/stackVisualizerService";
 
-const initialState: stackArrayItem[] = [
-  { id: v4(), item: "1" },
-  { id: v4(), item: "2" },
-  { id: v4(), item: "3" },
-];
+interface stackSliceInitialState {
+  stackItems: stackArrayItem[];
+  isLoading: boolean;
+}
+
+const initialState: stackSliceInitialState = {
+  stackItems: [],
+  isLoading: false,
+};
+
+export const fetchStackList = createAsyncThunk(
+  "stackVisualizer/fetchStackList",
+  async () => {
+    const res = await getStackList();
+
+    return res;
+  }
+);
+
+export const pushStackItem = createAsyncThunk(
+  "stackVisualizer/pushStackItem",
+  async (stackItem: stackArrayItem) => {
+    const res = await addStackItem(stackItem);
+
+    return res;
+  }
+);
+
+export const popStackItem = createAsyncThunk(
+  "stackVisualizer/popStackItem",
+  async () => {
+    const res = await removeStackItem();
+
+    return res;
+  }
+);
 
 export const stackVisualierSlice = createSlice({
   name: "stackVisualizer",
   initialState,
-  reducers: {
-    stackVisualizerListPush: (state, action: PayloadAction<stackArrayItem>) => {
-      state.push(action.payload);
-    },
-    stackVisualizerListPop: (state) => {
-      state.pop();
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchStackList.fulfilled, (state, action) => {
+        state.stackItems = action.payload;
+      })
+      .addCase(pushStackItem.fulfilled, (state, action) => {
+        state.stackItems.push(action.payload);
+      })
+      .addCase(popStackItem.fulfilled, (state) => {
+        state.stackItems.pop();
+      });
   },
 });
-
-export const { stackVisualizerListPop, stackVisualizerListPush } =
-  stackVisualierSlice.actions;
 
 export default stackVisualierSlice.reducer;
 
 export const stackVisualizerSelector = (state: RootState) =>
-  state.stackVisualizer;
+  state.stackVisualizer.stackItems;
