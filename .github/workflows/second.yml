@@ -1,0 +1,33 @@
+name: test and lint v2
+
+on:
+  pull_request:
+    paths-ignore:
+      - '**.md'
+  push:
+    branches:
+      - main
+
+jobs:
+        
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run test command
+        run: npm run test
+        
+      - name: Run lint command
+        run: npm run lint
