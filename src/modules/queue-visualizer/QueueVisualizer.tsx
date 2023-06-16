@@ -1,14 +1,14 @@
 import { useEffect, useState, useCallback } from "react";
-import DataListLayout from "../theme/components/DataListLayout";
-import { useAppDispatch, useAppSelector } from "../core/store/store";
+import DataListLayout from "modules/theme/components/DataListLayout";
+import { useAppDispatch, useAppSelector } from "modules/core/store/store";
 import {
   dequeueItem,
   enqueueItem,
   queueVisualizerSelector,
-} from "../queue-visualizer/store/queueVisualizerSlice";
+  fetchQueueList,
+} from "modules/queue-visualizer/store/queueVisualizerSlice";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";
-import { fetchQueueList } from "./store/queueVisualizerSlice";
 
 export const QueueVisualizer = () => {
   const EMPTY_STRING = "";

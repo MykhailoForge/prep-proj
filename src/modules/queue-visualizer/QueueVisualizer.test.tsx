@@ -8,7 +8,7 @@ import {
 } from "@testing-library/react";
 import { QueueVisualizer } from "modules/queue-visualizer/QueueVisualizer";
 import { Provider } from "react-redux";
-import { store } from "../core/store/store";
+import { store } from "modules/core/store/store";
 import { BrowserRouter } from "react-router-dom";
 
 const TEST_MSG = "queue elem";
