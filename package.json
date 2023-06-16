@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "vitest run src",
+    "test": "vitest run",
     "coverage": "vitest run --coverage",
     "cypress:open": "cypress open",
     "husky-install": "husky install",
