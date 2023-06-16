@@ -1,11 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { RootState } from "modules/core/store/store";
-import { stackArrayItem } from "modules/stack-visualizer/stackVisualizerModels";
-import {
-  addStackItem,
-  getStackList,
-  removeStackItem,
-} from "modules/stack-visualizer/service/stackVisualizerService";
+import { stackArrayItem } from "../stackVisualizerModels";
+import { addStackItem, getStackList, removeStackItem } from "../service/stackVisualizerService";
+
 
 interface stackSliceInitialState {
   stackItems: stackArrayItem[];

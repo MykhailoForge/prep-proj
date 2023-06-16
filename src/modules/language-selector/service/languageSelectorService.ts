@@ -1,4 +1,5 @@
-import { dbLanguageSelectArr } from "modules/language-selector/service/languageSelectorDB";
+import { dbLanguageSelectArr } from "./languageSelectorDB";
+
 
 const MOCK_DELAY = 250;
 

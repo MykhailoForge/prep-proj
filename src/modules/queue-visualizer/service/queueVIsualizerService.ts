@@ -1,5 +1,6 @@
-import { queueArrayItem } from "modules/queue-visualizer/queueVisualizerModels";
-import { dbQueueInitialState } from "modules/queue-visualizer/service/queueVisualizerDB";
+import { queueArrayItem } from "../queueVisualizerModels";
+import { dbQueueInitialState } from "./queueVisualizerDB";
+
 
 const MOCK_DELAY = 250;
 

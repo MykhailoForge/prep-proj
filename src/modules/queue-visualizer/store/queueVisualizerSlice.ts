@@ -1,11 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { RootState } from "modules/core/store/store";
-import { queueArrayItem } from "modules/queue-visualizer/queueVisualizerModels";
-import {
-  addQueueItem,
-  getQueueList,
-  removeQueueItem,
-} from "modules/queue-visualizer/service/queueVisualizerService";
+import { addQueueItem, getQueueList, removeQueueItem } from "../service/queueVisualizerService";
+import { queueArrayItem } from "../queueVisualizerModels";
+import { RootState } from "../../core/store/store";
+
 
 interface queueSliceInitialState {
   queueItems: queueArrayItem[];

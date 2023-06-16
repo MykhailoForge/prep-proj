@@ -1,5 +1,5 @@
-import { stackArrayItem } from "modules/stack-visualizer/stackVisualizerModels";
 import { v4 } from "uuid";
+import { stackArrayItem } from "../stackVisualizerModels";
 
 export const dbStackItemArray: stackArrayItem[] = [
   { id: v4(), item: "1" },

@@ -1,14 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "modules/core/store/store";
-import {
-  stackVisualizerSelector,
-  pushStackItem,
-  popStackItem,
-  fetchStackList,
-} from "modules/stack-visualizer/store/stackVisualizerSlice";
-import DataListLayout from "modules/theme/components/DataListLayout";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";
+import { useAppDispatch, useAppSelector } from "../core/store/store";
+import { fetchStackList, popStackItem, pushStackItem, stackVisualizerSelector } from "./store/stackVisualizerSlice";
+import DataListLayout from "../theme/components/DataListLayout";
 
 export const StackVisualizer = () => {
   const EMPTY_STRING = "";
