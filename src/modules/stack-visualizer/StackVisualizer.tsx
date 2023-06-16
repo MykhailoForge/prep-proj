@@ -1,17 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../core/store/store";
+import { useAppDispatch, useAppSelector } from "modules/core/store/store";
 import {
   stackVisualizerSelector,
   pushStackItem,
   popStackItem,
-} from "../stack-visualizer/store/stackVisualizerSlice";
-import DataListLayout from "../theme/components/DataListLayout";
+  fetchStackList,
+} from "modules/stack-visualizer/store/stackVisualizerSlice";
+import DataListLayout from "modules/theme/components/DataListLayout";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";
-import { fetchStackList } from "./store/stackVisualizerSlice";
 
 export const StackVisualizer = () => {
-  const EMPTY_STRING = ""
+  const EMPTY_STRING = "";
   const [stackVisualizerInput, setStackVisualizerInput] =
     useState<string>(EMPTY_STRING);
   const { t } = useTranslation();

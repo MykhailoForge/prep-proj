@@ -6,7 +6,7 @@ import {
   enqueueItem,
   queueVisualizerSelector,
   fetchQueueList,
-} from "modules/queue-visualizer/store/queueVisualizerSlice";
+} from "./store/queueVisualizerSlice";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";
 

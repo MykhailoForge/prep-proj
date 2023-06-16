@@ -1,4 +1,4 @@
-import { stackArrayItem } from "../stackVisualizerModels";
+import { stackArrayItem } from "modules/stack-visualizer/stackVisualizerModels";
 import { v4 } from "uuid";
 
 export const dbStackItemArray: stackArrayItem[] = [

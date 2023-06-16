@@ -8,7 +8,7 @@ import {
 } from "@testing-library/react";
 import { StackVisualizer } from "modules/stack-visualizer/StackVisualizer";
 import { Provider } from "react-redux";
-import { store } from "../core/store/store";
+import { store } from "modules/core/store/store";
 import { BrowserRouter } from "react-router-dom";
 
 const TEST_MSG = "stack elem";
