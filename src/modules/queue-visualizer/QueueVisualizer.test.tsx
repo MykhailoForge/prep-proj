@@ -1,4 +1,4 @@
-import { describe, test } from "vitest";
+import { describe, test, expect } from "vitest";
 import {
   render,
   screen,
@@ -6,10 +6,10 @@ import {
   waitFor,
   queryByText,
 } from "@testing-library/react";
-import { QueueVisualizer } from "modules/queue-visualizer/QueueVisualizer";
 import { Provider } from "react-redux";
-import { store } from "modules/core/store/store";
 import { BrowserRouter } from "react-router-dom";
+import { store } from "../core/store/store";
+import { QueueVisualizer } from "./QueueVisualizer";
 
 const TEST_MSG = "queue elem";
 const QUEUE_FIRST_ELEM_MATCHER = new RegExp("1");

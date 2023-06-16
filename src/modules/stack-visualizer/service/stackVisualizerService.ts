@@ -1,5 +1,5 @@
-import { stackArrayItem } from "modules/stack-visualizer/stackVisualizerModels";
-import { dbStackItemArray } from "modules/stack-visualizer/service/stackVIsualizerDB";
+import { stackArrayItem } from "../stackVisualizerModels";
+import { dbStackItemArray } from "./stackVIsualizerDB";
 
 const MOCK_DELAY = 250;
 

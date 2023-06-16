@@ -1,11 +1,8 @@
 import { expect, test } from "vitest";
-import {
-  addStackItem,
-  getStackList,
-  removeStackItem,
-} from "modules/stack-visualizer/service/stackVisualizerService";
 import { v4 } from "uuid";
-import { dbStackItemArray } from "modules/stack-visualizer/service/stackVIsualizerDB";
+import { dbStackItemArray } from "./stackVIsualizerDB";
+import { addStackItem, getStackList, removeStackItem } from "./stackVisualizerService";
+
 
 test("should resolve with proper array", async () => {
   await expect(getStackList()).resolves.toBe(dbStackItemArray);

@@ -1,11 +1,11 @@
-import { expect, test } from "vitest";
+import { v4 } from "uuid";
 import {
   addQueueItem,
   getQueueList,
   removeQueueItem,
-} from "modules/queue-visualizer/service/queueVisualizerService";
-import { v4 } from "uuid";
-import { dbQueueInitialState } from "modules/queue-visualizer/service/queueVisualizerDB";
+} from "./queueVisualizerService";
+import { dbQueueInitialState } from "./queueVisualizerDB";
+import { expect, test } from "vitest";
 
 test("should resolve with proper array", async () => {
   await expect(getQueueList()).resolves.toBe(dbQueueInitialState);

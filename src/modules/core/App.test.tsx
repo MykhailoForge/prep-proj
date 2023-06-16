@@ -1,9 +1,9 @@
 import { describe, test } from "vitest";
 import { render } from "@testing-library/react";
-import App from "modules/core/App";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 
 describe("App test", () => {
   test("Should render component", () => {

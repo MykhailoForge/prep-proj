@@ -1,4 +1,4 @@
-import { describe, test, vi } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 import {
   render,
   screen,
@@ -6,11 +6,12 @@ import {
   waitFor,
   getByRole,
 } from "@testing-library/react";
-import { store } from "modules/core/store/store";
+
 import { Provider } from "react-redux";
-import { LanguageSelector } from "modules/language-selector/LanguageSelector";
 import userEvent from "@testing-library/user-event";
 import { v4 } from "uuid";
+import { store } from "../core/store/store";
+import { LanguageSelector } from "./LanguageSelector";
 
 beforeEach(() => vi.resetAllMocks());
 

@@ -1,4 +1,4 @@
-import { describe, test } from "vitest";
+import { describe, test, expect } from "vitest";
 import {
   fireEvent,
   render,
@@ -6,10 +6,10 @@ import {
   waitFor,
   queryByText,
 } from "@testing-library/react";
-import { StackVisualizer } from "modules/stack-visualizer/StackVisualizer";
 import { Provider } from "react-redux";
-import { store } from "modules/core/store/store";
 import { BrowserRouter } from "react-router-dom";
+import { StackVisualizer } from "./StackVisualizer";
+import { store } from "../core/store/store";
 
 const TEST_MSG = "stack elem";
 const TEST_MSG_MATCHER = new RegExp(TEST_MSG, "i");

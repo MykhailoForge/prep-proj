@@ -1,6 +1,4 @@
 import { useEffect, useState, useCallback } from "react";
-import DataListLayout from "modules/theme/components/DataListLayout";
-import { useAppDispatch, useAppSelector } from "modules/core/store/store";
 import {
   dequeueItem,
   enqueueItem,
@@ -9,6 +7,8 @@ import {
 } from "./store/queueVisualizerSlice";
 import { useTranslation } from "react-i18next";
 import { v4 } from "uuid";
+import { useAppDispatch, useAppSelector } from "../core/store/store";
+import DataListLayout from "../theme/components/DataListLayout";
 
 export const QueueVisualizer = () => {
   const EMPTY_STRING = "";
