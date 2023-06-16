@@ -6,7 +6,7 @@ import {
   waitFor,
   queryByText,
 } from "@testing-library/react";
-import { QueueVisualizer } from "./QueueVisualizer";
+import { QueueVisualizer } from "modules/queue-visualizer/QueueVisualizer";
 import { Provider } from "react-redux";
 import { store } from "../core/store/store";
 import { BrowserRouter } from "react-router-dom";

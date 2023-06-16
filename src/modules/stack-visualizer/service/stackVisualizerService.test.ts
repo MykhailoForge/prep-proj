@@ -3,7 +3,7 @@ import {
   addStackItem,
   getStackList,
   removeStackItem,
-} from "./stackVisualizerService";
+} from "modules/stack-visualizer/service/stackVisualizerService";
 import { v4 } from "uuid";
 import { dbStackItemArray } from "./stackVIsualizerDB";
 
