@@ -1,8 +1,8 @@
 import Box from "@mui/material/Box";
-import { useAppSelector } from "../core/store/store";
-import { selectedLanguageSelector } from "../core/store/coreSlice";
+import { useAppSelector } from "modules/core/store/store";
+import { selectedLanguageSelector } from "modules/core/store/coreSlice";
 import { MenuItem, TextField } from "@mui/material";
-import { languageArrItem } from "./languageSelectorModels";
+import { languageArrItem } from "modules/language-selector/languageSelectorModels";
 
 interface LanguageSelectorProps {
   changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;

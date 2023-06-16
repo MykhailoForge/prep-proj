@@ -6,7 +6,7 @@ import {
   waitFor,
   getByRole,
 } from "@testing-library/react";
-import { store } from "../core/store/store";
+import { store } from "modules/core/store/store";
 import { Provider } from "react-redux";
 import { LanguageSelector } from "modules/language-selector/LanguageSelector";
 import userEvent from "@testing-library/user-event";
