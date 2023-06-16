@@ -1,4 +1,4 @@
-import { queueArrayItem } from "../queueVisualizerModels";
+import { queueArrayItem } from "modules/queue-visualizer/queueVisualizerModels";
 import { v4 } from "uuid";
 
 export const dbQueueInitialState: queueArrayItem[] = [
