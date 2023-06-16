@@ -1,4 +1,7 @@
-import { getLangList, setLangSelection } from "./languageSelectorService";
+import {
+  getLangList,
+  setLangSelection,
+} from "modules/language-selector/service/languageSelectorService";
 import { expect, test } from "vitest";
 import { dbLanguageSelectArr } from "./languageSelectorDB";
 

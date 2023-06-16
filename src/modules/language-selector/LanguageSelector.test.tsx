@@ -8,7 +8,7 @@ import {
 } from "@testing-library/react";
 import { store } from "../core/store/store";
 import { Provider } from "react-redux";
-import { LanguageSelector } from "./LanguageSelector";
+import { LanguageSelector } from "modules/language-selector/LanguageSelector";
 import userEvent from "@testing-library/user-event";
 import { v4 } from "uuid";
 
